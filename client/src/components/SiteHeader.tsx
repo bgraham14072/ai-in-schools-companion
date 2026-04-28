@@ -1,8 +1,8 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useRole } from "@/lib/role-context";
-import { ROLES } from "@/data/book";
-import { BookOpen } from "lucide-react";
+import { ROLES, BOOK } from "@/data/book";
+import { BookOpen, ShoppingCart } from "lucide-react";
 
 const NAV = [
   { label: "Themes", href: "/themes" },
@@ -55,13 +55,25 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
+          <a
+            href={BOOK.buyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="link-nav-buy-book"
+            className="hidden sm:inline-flex"
+          >
+            <Button size="sm" variant="outline" className="text-xs">
+              <ShoppingCart className="mr-1.5 h-3.5 w-3.5" />
+              Buy the book
+            </Button>
+          </a>
           {roleObj ? (
             <Button
               variant="outline"
               size="sm"
               onClick={() => setRole(null)}
               data-testid="button-change-role"
-              className="hidden text-xs sm:inline-flex"
+              className="hidden text-xs lg:inline-flex"
             >
               <span className="text-muted-foreground">Reading as:</span>
               <span className="ml-1 font-medium">{roleObj.label.split(" / ")[0]}</span>

@@ -1,4 +1,6 @@
 import { BOOK, NEXT_BOOK } from "@/data/book";
+import { ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function SiteFooter() {
   return (
@@ -15,6 +17,18 @@ export function SiteFooter() {
             <p className="mt-3 text-xs text-muted-foreground">
               Compiled by {BOOK.compiler}, {BOOK.year}.
             </p>
+            <a
+              href={BOOK.buyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-buy-book-footer"
+              className="mt-4 inline-flex"
+            >
+              <Button size="sm" variant="default">
+                <ShoppingCart className="mr-1.5 h-3.5 w-3.5" />
+                Buy on Amazon
+              </Button>
+            </a>
           </div>
           <div>
             <p className="text-sm font-semibold">Coming September 2026</p>

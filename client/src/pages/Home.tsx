@@ -12,6 +12,7 @@ import {
 } from "@/data/book";
 import { useRole } from "@/lib/role-context";
 import { ThemeBadge } from "@/components/ThemeBadge";
+import { BookCTA } from "@/components/BookCTA";
 import {
   Compass,
   School,
@@ -97,6 +98,11 @@ export default function Home() {
             <Stat label="Tools indexed" value={String(TOOLS.length)} />
           </div>
         </div>
+      </section>
+
+      {/* BUY THE BOOK */}
+      <section className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 sm:pt-16">
+        <BookCTA variant="hero" testIdSuffix="home-hero" />
       </section>
 
       {/* ROLE PICKER */}

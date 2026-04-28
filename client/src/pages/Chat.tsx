@@ -6,6 +6,7 @@ import { useRole } from "@/lib/role-context";
 import { ROLES } from "@/data/book";
 import { Send, MessageSquareText, Sparkles, BookOpen } from "lucide-react";
 import { Link } from "wouter";
+import { BookCTA } from "@/components/BookCTA";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -83,6 +84,9 @@ export default function Chat() {
             </>
           )}
         </p>
+        <div className="mt-4">
+          <BookCTA variant="banner" testIdSuffix="chat" />
+        </div>
       </div>
 
       {/* Messages */}

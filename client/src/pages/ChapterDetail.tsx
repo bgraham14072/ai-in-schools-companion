@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CHAPTERS, CONTRIBUTORS, TOOLS, ROLES } from "@/data/book";
 import { ThemeBadge } from "@/components/ThemeBadge";
+import { BookCTA } from "@/components/BookCTA";
 import {
   ArrowLeft,
   ArrowRight,
@@ -248,6 +249,11 @@ export default function ChapterDetail() {
           </Link>
         )}
       </nav>
+
+      {/* BUY THE BOOK */}
+      <div className="mt-12">
+        <BookCTA variant="banner" testIdSuffix={`ch${chapter.number}`} />
+      </div>
     </article>
   );
 }

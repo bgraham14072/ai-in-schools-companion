@@ -1127,6 +1127,8 @@ export const BOOK = {
   pageCount: 163,
   description:
     "A collaborative, leader-focused exploration of AI in K–12 education — from foundations and ethics to classroom practice and district-wide change.",
+  buyUrl:
+    "https://www.amazon.com/Future-Artificial-Intelligence-Technologies-Education/dp/B0FVPYCK35",
 };
 
 export const NEXT_BOOK = {

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CHAPTERS, ROLES, THEMES, TOOLS } from "@/data/book";
 import { useRole } from "@/lib/role-context";
 import { ThemeBadge } from "@/components/ThemeBadge";
+import { BookCTA } from "@/components/BookCTA";
 import {
   ArrowRight,
   BookOpen,
@@ -205,6 +206,11 @@ export default function Dashboard() {
           </div>
         </section>
       )}
+
+      {/* BUY THE BOOK */}
+      <section className="mt-16">
+        <BookCTA variant="hero" testIdSuffix="dashboard" />
+      </section>
     </div>
   );
 }

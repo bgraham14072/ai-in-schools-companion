@@ -80,9 +80,13 @@ export async function registerRoutes(
         content: m.content.slice(0, 4000),
       }));
 
-      const client = new Anthropic();
+      // In dev sandbox, the proxy injects credentials and uses model alias "claude_sonnet_4_6".
+      // In published sandbox, we use the user's own ANTHROPIC_API_KEY and a real model id.
+      const userKey = process.env.ANTHROPIC_API_KEY;
+      const client = userKey ? new Anthropic({ apiKey: userKey }) : new Anthropic();
+      const model = userKey ? "claude-sonnet-4-5" : "claude_sonnet_4_6";
       const result = await client.messages.create({
-        model: "claude_sonnet_4_6",
+        model,
         max_tokens: 1200,
         system: SYSTEM_PROMPT(role),
         messages: trimmed,

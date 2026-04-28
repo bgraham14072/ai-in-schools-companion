@@ -12,5 +12,8 @@ data.db-journal
 .env.*
 !.env.example
 
+# Server-side secrets loaded at runtime — never commit
+server/.secrets.json
+
 *.log
 .DS_Store

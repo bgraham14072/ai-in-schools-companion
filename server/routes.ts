@@ -5,6 +5,27 @@ import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 
+// Load server-side secrets (API keys) at startup. The file is gitignored and only
+// lives inside the deployed server tarball — never in the public S3 bundle.
+try {
+  const secretCandidates = [
+    path.resolve(process.cwd(), "server", ".secrets.json"),
+    path.resolve(process.cwd(), ".secrets.json"),
+    path.resolve(__dirname, "..", "server", ".secrets.json"),
+  ];
+  for (const p of secretCandidates) {
+    if (fs.existsSync(p)) {
+      const parsed = JSON.parse(fs.readFileSync(p, "utf8"));
+      for (const [k, v] of Object.entries(parsed)) {
+        if (!process.env[k] && typeof v === "string") process.env[k] = v;
+      }
+      break;
+    }
+  }
+} catch (e) {
+  console.warn("[secrets] could not load secrets file", e);
+}
+
 // Load the book corpus once at server start.
 let BOOK_CORPUS = "";
 try {
